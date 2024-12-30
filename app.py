@@ -2,7 +2,7 @@ from flask import Flask
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = '12345678'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 @socketio.on('connect')
