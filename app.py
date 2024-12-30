@@ -5,6 +5,10 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '12345678'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
+@app.route('/')
+def index():
+    return "Welcome to my app!"
+
 @socketio.on('connect')
 def on_connect():
     print("Client connected")
