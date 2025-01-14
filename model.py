@@ -208,7 +208,7 @@ def get_ai_response(messages, context, model):
 ################################################ main Code ###########################################################
 
 
-def main(prompt):
+def Resp(prompt):
     # Initialize session state variables using a dictionary
     session_state = {}
     if 'messages' not in session_state:
@@ -263,6 +263,3 @@ def main(prompt):
     #     st.session_state.conversation_log = []
 
     return full_response
-
-if __name__ == "__main__":
-    main()
