@@ -4,7 +4,6 @@ from pathlib import Path
 # THis code is working fine for initial stage
 from flask import Flask, request, jsonify
 import model
-import streamlit as st # type: ignore
 import os
 from dotenv import load_dotenv # type: ignore
 from groq import Groq # type: ignore
@@ -102,7 +101,6 @@ def extract_text(page):
         logger.warning(f"Error extracting text from page: {e}")
         return ""
 
-@st.cache_data
 def split_into_chunks(text, chunk_size=1000, overlap=100):
 
     logger.warning(f"Text for Cunks : {len(text)}")
@@ -125,7 +123,6 @@ def split_into_chunks(text, chunk_size=1000, overlap=100):
     return chunks
 
 
-@st.cache_data
 def get_or_create_chunks(file_paths):
     try:
         combined_text = ""  # Initialize an empty string to hold combined text
@@ -174,7 +171,6 @@ def get_or_create_chunks(file_paths):
         return []
 
 
-@st.cache_resource
 def get_vectorizer(chunks):
     try:
         return TfidfVectorizer().fit(chunks)
@@ -239,7 +235,7 @@ def resp(prompt):
 
     if pdf_file:
         session_state['chunks'] = get_or_create_chunks(pdf_file)
-        session_state['vectorizer'] = get_vectorizer(st.session_state.chunks)
+        session_state['vectorizer'] = get_vectorizer(session_state['chunks'])
         if session_state['chunks'] and session_state['vectorizer']:
             print("PDF processed successfully!")
         else:
