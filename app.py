@@ -18,9 +18,9 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # Groq API Key (Replace with your actual key)
-
+GROQ_API_KEY = "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"
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -171,7 +171,6 @@ def chat():
 if __name__ == '__main__':
     # Load FAISS index at startup
     load_faiss_index()
-    
 
     # Process PDFs if needed
     pdf_files = ["./data/Uskt_Data.pdf", "./data/Directions_data.pdf", "./data/ReTrain_Data.pdf", "./data/mozdoc.pdf", "./data/navigation.pdf"]
@@ -209,6 +208,7 @@ if __name__ == '__main__':
 # load_dotenv()
 
 # # GROQ_API_KEY= os.getenv("GROQ_API_KEY")
+# GROQ_API_KEY= "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"
 # Account_SID = os.getenv("Account_SID")
 # Auth_Token = os.getenv("Auth_Token")
 # Twilio_Number= os.getenv("Twilio_Number")
