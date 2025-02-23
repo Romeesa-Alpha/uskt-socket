@@ -4,7 +4,7 @@ Flask-SQLAlchemy
 gunicorn
 numpy
 pandas
-faiss-cpu
+faiss
 sentence-transformers
 groq
 PyPDF2
