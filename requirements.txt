@@ -18,3 +18,9 @@ flask_cors
 flask-sqlalchemy
 flask-wtf
 flask_bootstrap
+flask
+faiss-cpu
+numpy
+concurrentloghandler
+groq
+sentence-transformers

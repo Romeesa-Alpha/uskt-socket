@@ -18,8 +18,9 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # Groq API Key (Replace with your actual key)
-GROQ_API_KEY = "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"
+
 
 # Initialize Flask app
 app = Flask(__name__)
