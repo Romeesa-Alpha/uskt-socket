@@ -19,7 +19,7 @@ flask-sqlalchemy
 flask-wtf
 flask_bootstrap
 flask
-faiss-cpu
+faiss
 numpy
 groq
 sentence-transformers
