@@ -377,12 +377,12 @@ def find_most_relevant_chunks(query, chunks, vectorizer,top_k):
 
 def get_ai_response(messages, context, model):
     try:
-        system_message = {"role": "system", "content": "You are a helpful university chatbot assistant for answering university of sialkot related questions about the given PDF content. Use the provided context to answer questions, but also consider the conversation history. If the answer is not in context, reply with 'This bot is still under construction. "}
+        system_message = {"role": "system", "content": "You are a helpful university chatbot assistant for answering university of sialkot related questions about the given PDF.use given data to answer but also consider the conversation history. If the answer is not in context, reply with 'This bot is still under construction. "}
         system_message2 = {"role": "system", "content": " This is the generate fee of programs and admisson, but it can be vary by speciic program so first take look in program detail if the details is note exsis then you can use it, Admission Fee: Rs. 15,000, Registration Fee: Rs. 15,000, Asosiative Degree Program (ADP) one semester fee is  86,515, Bs program one semester fee is 95,832, MS program one semester fee Rs 113,135, PHD program fee for one semester is Rs. 167,706 "}
-        system_message3 = {"role": "system", "content": "write positive intro if someone ask about a teacher personality even it does not exist in context,And make sure to give answer to the point"}
+        system_message3 = {"role": "system", "content": "write positive intro if someone ask about a teacher personality even it does not exist in context,And make sure to give answer to the point and did not use the information acording to provided context in the start of output"}
         
         # Combine system message, conversation history, and the new query with context
-        all_messages = [system_message]+ [system_message2]+ [system_message3]+ messages[:-1] + [{"role": "user", "content": f"Context: {context}\n\nthis context and our previous conversation, please answer the following question and did not use the information acording to provided context in the start of output: {messages[-1]['content']}"}]
+        all_messages = [system_message]+ [system_message2]+ [system_message3]+ messages[:-1] + [{"role": "user", "content": f"Context: {context}\n\nthis context and our previous conversation, please answer the following question: {messages[-1]['content']}"}]
 
         chat_completion = client.chat.completions.create(
             messages=all_messages,
@@ -415,7 +415,7 @@ def resp(prompt):
 
 
     # pdf_file = ["./data/Directions_data.pdf", "./data/Fee Structure.pdf", "./data/General_data.pdf", "./data/Post-Graduate_Programs.pdf", "./data/Teachers data.pdf", "./data/Under_Graduate_Programs.pdf", "./data/University of Sialkot chatbot.pdf"]
-    pdf_file = ["./data/Uskt_Data.pdf", "./data/Directions_data.pdf", "./data/ReTrain_Data.pdf", "./data/mozdoc.pdf", "./data/navigation.pdf"]
+    pdf_file = ["./data/Uskt_Data.pdf", "./data/ReTrain_Data.pdf", "./data/mozdoc.pdf", "./data/navigation.pdf"]
 
     if pdf_file:
         session_state['chunks'] = get_or_create_chunks(pdf_file)
