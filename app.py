@@ -221,9 +221,17 @@ app = Flask(__name__)
 @app.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('message')
-    # response = {"reply": f"You said: {user_input}"}
-    response= resp(user_input)
-    return jsonify(response)
+    response_text = resp(user_input)  # Assuming resp() returns a string
+
+    # Ensure the response is returned as a JSON object
+    return jsonify({"reply": response_text})
+    
+# @app.route('/chat', methods=['POST'])
+# def chat():
+#     user_input = request.json.get('message')
+#     # response = {"reply": f"You said: {user_input}"}
+#     response= resp(user_input)
+#     return jsonify(response)
 
 
 ############################## whatsapp message send using TWilio ######################333
