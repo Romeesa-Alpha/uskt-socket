@@ -207,8 +207,8 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-# GROQ_API_KEY= os.getenv("GROQ_API_KEY")
-GROQ_API_KEY="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"
+GROQ_API_KEY= os.getenv("GROQ_API_KEY")
+
 
 Account_SID = os.getenv("Account_SID")
 Auth_Token = os.getenv("Auth_Token")
