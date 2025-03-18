@@ -218,6 +218,10 @@ Recipient_Number = os.getenv("Recipient_Number")
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "API is running!"
+
 @app.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('message')
@@ -390,7 +394,7 @@ def get_ai_response(messages, context, model):
         system_message3 = {"role": "system", "content": "write positive intro if someone ask about a teacher personality even it does not exist in context,And make sure to give answer to the point and did not use the information acording to provided context in the start of output"}
         
         # Combine system message, conversation history, and the new query with context
-        all_messages = [system_message]+ [system_message2]+ [system_message3]+ messages[:-1] + [{"role": "user", "content": f"Context: {context}\n\nthis context and our previous conversation, please answer the following question: {messages[-1]['content']}"}]
+        all_messages = [system_message]+ [system_message2]+ [system_message3]+ messages[:-1] + [{"role": "user", "content": f"Context: {context}\n\n using this data and previous conversation please answer the following question: {messages[-1]['content']}"}]
 
         chat_completion = client.chat.completions.create(
             messages=all_messages,
